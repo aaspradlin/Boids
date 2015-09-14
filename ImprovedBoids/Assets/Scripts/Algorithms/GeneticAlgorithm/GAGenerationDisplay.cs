@@ -14,9 +14,7 @@ public class GAGenerationDisplay : AlgorithmDisplay {
 	 * This writes information about the current state of the algorithm to a text file. </summary> */
 	override protected void Print_information () {
 
-		//TODO figure out what to write to a file
-
-		string message = "generation fitness: ";
+		string message = "Generation: " + ((GeneticAlgorithm)subject).Generation.ToString () + "\nAverage Fitness: " + ((GeneticAlgorithm)subject).AverageFitness.ToString();
 		Debug.Log (message);
 		
 		//write the message to a file

@@ -363,19 +363,15 @@ public class GeneticAlgorithm : Algorithm {
 		
 		GAFlock flockScript = flock.GetComponent<GAFlock>();
 		float fitness = 0;
-		float goalDistance = 7f;
+		float goalDistance = 7f; //TODO this should be a function of Boid.SEPARATION
 		float goalSpeed = (Flock.MIN_SPEED + Flock.MAX_SPEED) / 2;
 		
 		//get the variables used to calculate the fitness from the flock
 		int colliderCount = flockScript.Num_Collisions;
 		float averageDistance = flockScript.Average_Distance;
-		
-		//forgive one or two collisions
-		if (colliderCount <= 3) colliderCount = 0;
-		else colliderCount -= 3;
-		
+
 		//calculate the fitness
-		fitness = (1/(Mathf.Abs (goalDistance - averageDistance) * Mathf.Abs (goalSpeed - flock.rigidbody.velocity.magnitude)))/(1 + colliderCount * 0.01f);
+		fitness = (1/(Mathf.Abs (goalDistance - averageDistance) * Mathf.Abs (goalSpeed - flock.rigidbody.velocity.magnitude)))/(1 + colliderCount * 0.2f);
 		
 		return fitness;
 	}
@@ -388,12 +384,9 @@ public class GeneticAlgorithm : Algorithm {
 
 		//order the array
 		for (int write = 0; write < currentGeneration.Length; write++) {
-			
 			//for each subsequent fitness
 			for (int sort = 0; sort < currentGeneration.Length - 1; sort++) {
-				
 				if (currentGeneration[sort].Fitness < currentGeneration[sort + 1].Fitness) {
-
 					temp = currentGeneration[sort + 1];
 					currentGeneration[sort + 1] = currentGeneration[sort];
 					currentGeneration[sort] = temp;

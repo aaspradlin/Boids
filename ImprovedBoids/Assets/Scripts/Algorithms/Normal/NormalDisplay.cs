@@ -7,7 +7,7 @@ public class NormalDisplay : AlgorithmDisplay {
 
 	/** <summary>
  	* The strings currently in the text fields. </summary> */
-	private string[] coefficients = new string[] {"1.5", "1.5", "1.5"};
+	private string[] coefficients = new string[3];
 
 	/*-------------------------------------------------------------------------------------------------------------*/
 	
@@ -49,7 +49,12 @@ public class NormalDisplay : AlgorithmDisplay {
 		base.DisplayGUI ();
 
 		//check if enter has been pressed
-		if (Event.current.keyCode == KeyCode.Return && TextFieldIsFocus()) Update_Values();
+		if (Event.current.keyCode == KeyCode.Return && TextFieldIsFocus ()) {
+			Update_Values ();
+			RemoveFocus();
+		} else if (Event.current.keyCode == KeyCode.Escape) {
+			RemoveFocus();
+		}
 
 		//for the labels above the text fields
 		GUI.skin.label.fontSize = 11;
@@ -79,6 +84,7 @@ public class NormalDisplay : AlgorithmDisplay {
 		                          button_width, button_height), "Reset")) {
 			((Normal)subject).Reset();
 			Update_listener();
+			RemoveFocus();
 		}
 
 		//create a button to change the flock based on the content of the text areas
@@ -86,6 +92,7 @@ public class NormalDisplay : AlgorithmDisplay {
 		                          Screen.height - button_height - side_padding, 
 		                          button_width, button_height), "Apply")) {
 			Update_Values();
+			RemoveFocus();
 		}
 	}
 
@@ -117,8 +124,13 @@ public class NormalDisplay : AlgorithmDisplay {
 		string focus = GUI.GetNameOfFocusedControl();
 		for (int i = 0; i < coefficients.Length; i++) {
 			if (focus == i.ToString ()) return true;
-			
 		}
 		return false;
+	}
+
+	/** <summary>
+	 * This removes focus from any GUI component. </summary> */
+	private void RemoveFocus() {
+		GUI.FocusControl("");
 	}
 }

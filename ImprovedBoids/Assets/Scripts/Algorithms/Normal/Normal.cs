@@ -32,6 +32,7 @@ public class Normal : Algorithm {
 
 		//add the default display to the GUI
 		base.AddDisplay("NormalDisplay", true);
+		Notify ();
 
 		//create the flock
 		Start_new_flock ();

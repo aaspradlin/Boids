@@ -28,3 +28,8 @@ genome: 001011111111100100010110
    Cohesion Coefficient = 1.846
    Separation Coefficient = 5.48
    Follow Coefficient = 0.94
+generation fitness: Generation: 1
+Average Fitness: 0.2762307Coefficients: 
+   Separation: 1.5
+   Cohesion: 1.5
+   Follow: 1.5
