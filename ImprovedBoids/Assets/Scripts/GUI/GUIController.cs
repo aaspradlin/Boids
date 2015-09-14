@@ -3,7 +3,7 @@ using System.Collections;
 
 /** <summary>
  * This class creates and deletes all GUI related scripts within the scene. </summary> */
-public class GUIController : MonoBehaviour {
+public sealed class GUIController : MonoBehaviour {
 
 	/** <summary>
 	 * Holds the names of all GUI scripts being displayed in the scene. </summary> */

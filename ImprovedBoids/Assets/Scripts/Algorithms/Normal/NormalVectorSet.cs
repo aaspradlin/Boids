@@ -7,21 +7,24 @@ using System.Collections.Generic;
 public class NormalVectorSet : VectorSet {
 
 	/** <summary>
-	 * </summary> */
+	 * //TODO </summary> */
 	private Coefficient followCoefficient;
 
 	/** <summary>
-	 * </summary> */
+	 * //TODO </summary> */
 	private Coefficient cohesionCoefficient;
 
 	/** <summary>
-	 * </summary> */
+	 * //TODO </summary> */
 	private Coefficient separationCoefficient;
 
 	/*-------------------------------------------------------------------------------------------------------------*/
 
 	/** <summary> 
-	 * Primary constructor. //TODO add parameters </summary> */
+	 * Primary constructor. </summary>
+	 * <param name="follow"> The value for the coefficient for the follow rule </param> 
+	 * <param name="cohesion"> The value for the coefficient for the cohesion rule </param> 
+	 * <param name="separation"> The value for the coefficient for the separation rule </param> */
 	public NormalVectorSet(float follow, float cohesion, float separation) {
 		followCoefficient = new Coefficient(follow, "Follow");
 		cohesionCoefficient = new Coefficient(cohesion, "Cohesion");
@@ -42,7 +45,7 @@ public class NormalVectorSet : VectorSet {
 		//IMPORTANT: this is where to add other vectors for offsetting
 		Vector3 directionVector = (Follow (boid, leader_boids) * followCoefficient.Value) 
 			+ (Cohesion(boid, leader_boids) * cohesionCoefficient.Value) 
-				+ (Separation (boid, leader_boids) * separationCoefficient.Value);
+			+ (Separation (boid, leader_boids) * separationCoefficient.Value);
 		return directionVector;
 	}
 	
@@ -52,7 +55,7 @@ public class NormalVectorSet : VectorSet {
 	 * Updates the struct that stores special groups of interest within the flock. </summary>
 	 * <param name="boid"> The boid this is being calculated for </param>
 	 * <param name="boids"> The boids important to the calculation </param>
-	 * <returns> The boids ahead of the focus boid </returns*/
+	 * <returns> The boids ahead of the focus boid </returns> */
 	private ArrayList Get_leaders(GameObject boid, ArrayList boids) {
 		
 		ArrayList leader_boids = new ArrayList ();
@@ -65,13 +68,12 @@ public class NormalVectorSet : VectorSet {
 				Vector3 thisSeparation = other_boid.transform.position - boid.transform.position;
 				
 				//add to the localBirds array if it's within the radius 
-				if (thisSeparation.magnitude <= Boid.RADIUS) { 
+				if (thisSeparation.sqrMagnitude <= Boid.RADIUS * Boid.RADIUS) { 
 					
 					//if the angle between the bird's velocity vector and thisSeparation vector
 					//is within the bird's angle of vision, add it to leaderBirds
 					if (Vector3.Angle(boid.rigidbody.velocity, thisSeparation) < Boid.VISION_ANGLE) {
 						leader_boids.Add (other_boid);
-						//TODO uh oh this doesn't work
 					} 
 				}
 			}
@@ -114,8 +116,6 @@ public class NormalVectorSet : VectorSet {
 		
 		Vector3 separationOffset = Vector3.zero;
 
-		//TODO uh oh. this is not proportional
-
 		//if the passed arraylist isn't empty
 		if (boids.Count != 0) {
 			
@@ -127,7 +127,7 @@ public class NormalVectorSet : VectorSet {
 				//if this bird is too close, add the offset
 				if (thisOffset.magnitude < Boid.SEPARATION_DISTANCE) {
 
-					separationOffset += thisOffset;
+					separationOffset += (Boid.SEPARATION_DISTANCE/(thisOffset.magnitude*2))*thisOffset;
 				}  
 			}
 		} 

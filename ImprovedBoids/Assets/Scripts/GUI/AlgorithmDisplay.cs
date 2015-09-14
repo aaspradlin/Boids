@@ -52,7 +52,6 @@ public abstract class AlgorithmDisplay : MonoBehaviour, AlgorithmListener {
 		                   Screen.width - side_padding*2,
 		                   button_height), subject.Name, custom_skin.GetStyle("Label"));
 
-
 		//create a button for stopping the algorithm
 		if (GUI.Button (new Rect (Screen.width - button_width - side_padding, 
 		                        Screen.height - button_height - side_padding, 
@@ -62,7 +61,6 @@ public abstract class AlgorithmDisplay : MonoBehaviour, AlgorithmListener {
 			//stop the algorithm
 			SceneController.Stop_algorithm();
 		}
-
 
 		//create a button for recording information about the current scene
 		if (GUI.Button (new Rect (Screen.width - (button_width + side_padding)*2, 
@@ -78,8 +76,7 @@ public abstract class AlgorithmDisplay : MonoBehaviour, AlgorithmListener {
 	/*--------------------------------------------------------------------------------------------------------*/
 	
 	/** <summary>
-	 * Assigns the display to the given Algorithm (see <see cref="AlgorithmListener"/>). </summary>
-	 * <param name="subject"> algorithm to monitor </param> */
+	 * Assigns the display to the given Algorithm (see <see cref="AlgorithmListener"/>). </summary> */
 	public Algorithm Subject {
 		set { subject = value; }
 	}

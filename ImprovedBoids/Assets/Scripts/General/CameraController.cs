@@ -75,7 +75,7 @@ public class CameraController : MonoBehaviour {
 				//find the radius and current angle
 				if (radius == -1) radius = (new Vector2(target.position.x, target.position.z) - new Vector2(transform.position.x, transform.position.z)).magnitude;
 
-				float theta = (float)Math.Atan2(offset.z, offset.x);
+				float theta = (float)Math.Atan2(offset.z, offset.x); //use Atan2 because it's not quadrant neutral
 				float modifier = ROT_FACTOR * Mathf.PI;
 
 				//if left is pressed

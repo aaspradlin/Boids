@@ -2,28 +2,31 @@
 using System.Collections;
 
 /** <summary>
- * This class pairs values with names. //TODO improve comment </summary> */
+ * This class pairs values with names for calcuting vector offsets. </summary> */
 public class Coefficient {
 	
 	/** <summary>
-	 * //TODO add comment </summary> */
+	 * The name of the coefficient. </summary> */
 	private readonly string name;
 	
 	/** <summary>
-	 * //TODO add comment </summary> */
+	 * The coefficient's value. </summary> */
 	private float value;
 	
 	/*-------------------------------------------------------------------------------------------------------------*/
 	
 	/** <summary>
-	 * //TODO add comment </summary> */
+	 * Primary constructor. </summary> 
+	 * <param name="value"> The coefficient's value </param> 
+	 * <param name="name"> The coefficient's name </param> */
 	public Coefficient(float value, string name) {
 		this.name = name;
 		this.value = value;
 	}
 
 	/** <summary>
-	 * //TODO add comment </summary> */
+	 * Constructor used when the value is not yet known. </summary> 
+	 * <param name="name"> The coefficient's name </param> */
 	public Coefficient(string name) {
 		this.name = name;
 	}
@@ -31,14 +34,14 @@ public class Coefficient {
 	/*-------------------------------------------------------------------------------------------------------------*/
 	
 	/** <summary>
-	 * //TODO add comment </summary> */
+	 * The coefficient's value. </summary> */
 	public float Value {
 		get { return this.value; }
 		set { this.value = value; }
 	}
 	
 	/** <summary>
-	 * //TODO add comment </summary> */
+	 * The coefficient's name. </summary> */
 	public string Name {
 		get { return name; }
 	}

@@ -11,7 +11,7 @@ public sealed class RandomVector {
 	
 	/** <summary>
 	 * The maximum magnitude of each component of the <see cref="randomOffset"/>. </summary> */
-	private const float MAGNITUDE = 4f;
+	private const float MAGNITUDE = 4;
 	
 	/*-----------------------------------------------------------------------------------------*/
 

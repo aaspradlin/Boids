@@ -55,7 +55,7 @@ public class GAVectorSet : VectorSet {
 				Vector3 thisSeparation = other_boid.transform.position - boid.transform.position;
 				
 				//add to the localBirds array if it's within the radius 
-				if (thisSeparation.magnitude <= Boid.RADIUS) { 
+				if (thisSeparation.sqrMagnitude <= Boid.RADIUS * Boid.RADIUS) { 
 					
 					//if the angle between the bird's velocity vector and thisSeparation vector
 					//is within the bird's angle of vision, add it to leaderBirds
@@ -82,17 +82,16 @@ public class GAVectorSet : VectorSet {
 		//vector pointing from this bird's position to the flock's position
 		Vector3 flockOffset = Vector3.zero;
 
-		if (boids.Count == 0) return flockOffset;
-
-		else {
+		if (boids.Count != 0) {
 
 			//add the offsets from all the birds in the passed arraylist and average them
 			foreach (GameObject other_boid in boids) 
 				flockOffset += other_boid.transform.position - boid.transform.position;
 			
-			
 			return flockOffset / boids.Count;
 		}
+
+		return flockOffset;
 	}
 	
 	/** <summary> 
@@ -116,7 +115,7 @@ public class GAVectorSet : VectorSet {
 				//if this bird is too close, add the offset
 				if (thisOffset.magnitude < Boid.SEPARATION_DISTANCE) {
 
-					separationOffset += thisOffset;
+					separationOffset += (Boid.SEPARATION_DISTANCE/(thisOffset.magnitude*2))*thisOffset;
 				}  
 			}
 		} 

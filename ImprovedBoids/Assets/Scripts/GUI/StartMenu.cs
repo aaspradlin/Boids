@@ -28,15 +28,13 @@ public sealed class StartMenu : MonoBehaviour {
 		int button_height = 30;
 		int menu_padding = 40;
 		int button_padding = 10;
-		
-		
+
 		//display the title of the program and the genome
 		GUI.Box(new Rect((Screen.width - button_width)/2 - menu_padding, 
 		                 (Screen.height/2) - ((button_height + button_padding)*algorithm_options.Length/2) - menu_padding, 
 		                 button_width + (menu_padding * 2), 
 		                 ((button_height + (button_padding*2))*algorithm_options.Length) + menu_padding), 
 		        "Choose the Algorithm to Use"); 
-		
 		
 		//create a button for each algorithm option and check if it's pressed
 		for (int i = 0; i < algorithm_options.Length; i++) {
