@@ -14,7 +14,8 @@ public sealed class StartMenu : MonoBehaviour {
 	/** <summary>
 	 * This sets up the <see cref="Algorithm"/> options to be displayed (see <see cref="MonoBehaviour"/>). </summary>*/
 	void Start () {
-		
+
+		//this is where you put the options in
 		algorithm_options = new Algorithm[] { new Normal("Flocking"), new GeneticAlgorithm("Genetic Algorithm")};
 	}
 
