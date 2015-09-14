@@ -1,0 +1,30 @@
+genome: 011010110110101100001000
+   Cohesion Coefficient = 2.926
+   Separation Coefficient = 2.64
+   Follow Coefficient = 0.66
+
+genome: 110011011100000101100010
+   Cohesion Coefficient = 4.69
+   Separation Coefficient = 4.36
+   Follow Coefficient = 2.46
+genome: 111111011101111000000000
+   Cohesion Coefficient = 5.554
+   Separation Coefficient = 4.94
+   Follow Coefficient = 0.5
+genome: 000010100011001100011111
+   Cohesion Coefficient = 1.18
+   Separation Coefficient = 1.52
+   Follow Coefficient = 1.12
+genome: 110101000000010001111000
+   Cohesion Coefficient = 4.816
+   Separation Coefficient = 0.58
+   Follow Coefficient = 2.9
+Coefficients: 
+Coefficients: 
+   Follow: 1.5
+   Separation: 1.5
+   Cohesion: 1.5
+genome: 001011111111100100010110
+   Cohesion Coefficient = 1.846
+   Separation Coefficient = 5.48
+   Follow Coefficient = 0.94
